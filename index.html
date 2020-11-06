@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet"> 
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- VUEJS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <title>VUEJS</title>
+</head>
+
+<body>
+
+    <!-- BIGLIETTO DA VISITA -->
+    <div id="biglietto">
+        <h2>Crea il tuo biglietto e controlla in diretta la preview!</h2>
+        <!-- Utilizzando V-MODEL associo l'input al data relativo creato in VUE e questo mi permette di visualizzare dinamicamente, nella sezione successiva, ciò che l'utente scrive negli input printato su schermo in tempo reale -->
+        <section class="composizione-biglietto">
+            <div>
+                <input 
+                    type="text"
+                    placeholder="Inserisci titolo..."
+                    v-model="title"
+                >
+            </div>
+            <div>
+                <textarea 
+                    cols="100" 
+                    rows="10"
+                    placeholder="Inserisci descrizione..."
+                    v-model="description"
+                >
+                </textarea>
+            </div>
+            <div>
+                <input 
+                    type="text"
+                    placeholder="Inserisci il tuo nome..."
+                    v-model="author"
+                >
+            </div>
+        </section>
+        <!-- Imposto la preview in tempo reale associando con la sintassi mustache i miei data in VUEJS agli elementi HTML -->
+        <section class="preview-biglietto">
+            <h3>{{ title }}</h3>
+            <p>{{ description }}</p>
+            <small>{{ author }}</small>
+        </section>
+
+    </div>
+
+    <!-- CIAO UTENTE! -->
+    <div id="ciao">
+
+        <h2 class="m15">Salutare l'utente con i dati da lui inseriti</h2>
+
+        <input 
+        type="text"
+        placeholder="Nome"
+        v-model="nome"
+        >
+        <input 
+        type="text"
+        placeholder="Cognome"
+        v-model="cognome"
+        >
+
+        <p class="m15">Benvenuto {{ nome }} {{cognome}}!</p>
+    </div>
+
+
+    <!-- RED AND BLUE BTN -->
+    <div id="btn">
+        <h2>RED and BLUE BUTTON</h2>
+        <!-- Con V-BIND associo la classe dinamica creata con vue all'oggetto su cui va -->
+        <h3 v-bind:class="titleClass" class="m15">Questo titolo cambierà colore quando premerai il bottone!!!</h3>
+        <!-- Con questa sintassi sto assegnando all'evente @click cul button la funzione da me creata mei methods di vue  -->
+        <button @click="changeColor">CHANGE!</button>
+    </div>
+
+    
+
+
+    <!-- Foglio JS -->
+    <script src="./js/script.js"></script>
+
+</body>
+
+</html>
